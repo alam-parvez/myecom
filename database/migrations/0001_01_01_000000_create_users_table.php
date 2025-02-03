@@ -19,13 +19,17 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
 
-            //created by me
-            $table->string("phone", 15)->nullable(true)->default("");
+
+
+
+            
+    //created by me
+            $table->string("phone",15)->nullable(true)->default("");
             $table->text("address")->nullable(true)->default("");
-            $table->string("pin", 10)->nullable(true)->default("");
-            $table->string("city", 50)->nullable(true)->default("");
-            $table->string("state", 50)->nullable(true)->default("");
-            $table->string("role", 10)->nullable(true)->default("Buyer");
+            $table->string("pin",10)->nullable(true)->default("");
+            $table->string("city",50)->nullable(true)->default("");
+            $table->string("state",50)->nullable(true)->default("");
+            $table->string("role",10)->nullable(true)->default("Buyer");
             $table->timestamps();
         });
 
