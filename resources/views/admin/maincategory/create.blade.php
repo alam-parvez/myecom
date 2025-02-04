@@ -44,8 +44,3 @@
         </div>
     </div>
 @endsection
-
-
-{{-- kjghfdsdfghjkl; --}}
-
-<h1>test</h1>
