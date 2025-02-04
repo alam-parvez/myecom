@@ -36,9 +36,6 @@
                                 @enderror
                             </div>
                         </div>
-                    
-
-                       
                     </form>
                 </div>
         </div>
