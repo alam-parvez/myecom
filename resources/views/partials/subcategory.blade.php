@@ -31,6 +31,9 @@
             }
           }
         </script>
+
+
+
         <h3 class="text-center p-2 mb-3" style="font-weight:800">Our Sub Categories</h3>
         <h5 class="text-center p-2 mb-3">We deals on Following Subcategories</h5>
             <div class="swiper-wrapper align-items-center">
@@ -51,6 +54,9 @@
                 <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt="">
                 </div>
             </div>
+
+
+            
             <div class="swiper-pagination"></div>
         </div>
 
