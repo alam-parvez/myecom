@@ -5,8 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Maincategory;
+use Illuminate\Support\Facades\Storage;
+
+// use Illuminate\Container\Attributes\Storage;
+
 class AdminMaincategoryController extends Controller
 {
+    public function __construct(private Maincategory $maincategory) {}
+
+
+
     /**
      * Display a listing of the resource.
      */
@@ -30,7 +39,23 @@ class AdminMaincategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+
+            "name" => "required|min:3|max:30|unique:maincategories",
+            "pic" => "required"
+
+        ]);
+
+
+        $pic = Storage::disk("public")->put("brands", $request->pic);
+
+        $this->maincategory->create([
+            "name" => $request->name,
+            "pic" => $pic,
+            "active" => $request->active
+
+        ]);
+        return redirect()->route('admin-maincategory');
     }
 
     /**

@@ -41,6 +41,7 @@ Route::group(["prefix" => "admin"], function () {
     Route::group(["prefix" => "maincategory"], function () {
         Route::get("/", [AdminMaincategoryController::class, "index"])->name("admin-maincategory");
         Route::get("/create", [AdminMaincategoryController::class, "create"])->name("admin-create-maincategory");
+        Route::get("/store", [AdminMaincategoryController::class, "store"])->name("admin-store-maincategory");
     });
 });
 

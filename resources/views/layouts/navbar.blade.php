@@ -38,6 +38,7 @@
         <li><a href="{{route('features')}}">Features</a></li>
         <li><a href="{{route('testimonials')}}">Testimonials</a></li>
         <li><a href="{{route('contact')}}">Contact</a></li>
+        <li><a href="{{route('admin-home')}}">Admin</a></li>
 
         <li class="dropdown"><a href="#" class="btn-getstarted px-4"><span>Dkart Store</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
