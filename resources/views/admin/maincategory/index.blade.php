@@ -14,7 +14,7 @@
             </div>
                 <div class="col-md-9">
                     <h5 class="bg-secondary text-center p-2 text-light">{{ $title }}
-                    <a href="{{route('admin-create-maincategory')}}" class="float-end"><i class="fa fa-backward text-light"></i></a></h5>
+                    <a href="{{route('admin-create-maincategory')}}" class="float-end text-light"><i class="fa fa-plus text-light"></i></a></h5>
                 </div>
         </div>
     </div>
