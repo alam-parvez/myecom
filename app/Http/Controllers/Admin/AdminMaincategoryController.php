@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\Maincategory;
 use Illuminate\Support\Facades\Storage;
 
-// use Illuminate\Container\Attributes\Storage;
-
 class AdminMaincategoryController extends Controller
 {
     public function __construct(private Maincategory $maincategory) {}
