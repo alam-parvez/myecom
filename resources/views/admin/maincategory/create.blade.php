@@ -15,8 +15,9 @@
                 <div class="col-md-9">
                     <h5 class="bg-secondary text-center p-2 text-light">{{ $title }}
                     <a href="{{route('admin-maincategory')}}" class="float-end text-light"><i class="fa fa-backward float-end text-light"> Back</i></a></h5>
-                    <form action="{{route('admin-store-maincategory')}}" method="post">
+                    <form action="{{route('admin-store-maincategory')}}" method="POST" enctype="multipart/form-data">
                         @csrf
+
                         <div class="mb-3">
                             <label>Name*</label>
                             <input type="text" name="name" value="{{old('name')}}" class="form-control border-3 border-secondary" placeholder="Full Name">
