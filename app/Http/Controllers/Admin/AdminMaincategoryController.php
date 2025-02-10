@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Models\Maincategory;
+
+
 use Illuminate\Support\Facades\Storage;
+
+
 
 class AdminMaincategoryController extends Controller
 {
@@ -44,10 +47,10 @@ class AdminMaincategoryController extends Controller
 
         ]);
 
-
         $pic = Storage::disk("public")->put("brands", $request->pic);
 
         $this->maincategory->create([
+
             "name" => $request->name,
             "pic" => $pic,
             "active" => $request->active
