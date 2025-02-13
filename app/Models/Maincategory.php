@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Maincategory extends Model
 {
@@ -11,4 +12,8 @@ class Maincategory extends Model
         'pic',
         'active'
     ];
+
+    function pic(){
+    return    Storage::url("pic");
+    }
 }

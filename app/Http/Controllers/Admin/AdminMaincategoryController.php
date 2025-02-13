@@ -20,7 +20,8 @@ class AdminMaincategoryController extends Controller
     public function index()
     {
         $title = "Maincategory";
-        $data = $this->maincategory->latest()->get();
+        $data = $this->maincategory->latest()->get();   //new record first
+        //  $data = $this->maincategory->all();   //oldest record first
         // return $data;
         return view("admin.maincategory.index", compact("title","data"));
     }

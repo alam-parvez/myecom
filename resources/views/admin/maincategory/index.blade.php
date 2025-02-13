@@ -31,9 +31,12 @@
                         <tbody>
                             <tr>
                                 <td>{{$item->id}}</td>
-                                <td>Name</td>
-                                <td>Pic</td>
-                                <td>Active</td>
+                                <td>{{$item->name}}</td>
+                                <td>
+                                    <a href="{{$item->pic()}}">
+                                    <img src="{{$item->pic()}}" height="50px" width="80px" alt=""></a>
+                                </td>
+                                <td>{{$item->active}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
