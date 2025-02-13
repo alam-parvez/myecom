@@ -14,13 +14,15 @@ class AdminMaincategoryController extends Controller
 
 
 
-    /**
+    /* *
      * Display a listing of the resource.
      */
     public function index()
     {
         $title = "Maincategory";
-        return view("admin.maincategory.index", compact("title"));
+        $data = $this->maincategory->latest()->get();
+        // return $data;
+        return view("admin.maincategory.index", compact("title","data"));
     }
 
     /**
@@ -42,10 +44,10 @@ class AdminMaincategoryController extends Controller
             "name" => "required|min:3|max:30|unique:maincategories",
             "pic" => "required"
 
-        ]);
+        ]);   
 
-
-        $pic = Storage::disk("public")->put("brands", $request->pic);
+    
+        $pic = Storage::disk("public")->put("maincategories", $request->pic);
 
         $this->maincategory->create([
             "name" => $request->name,

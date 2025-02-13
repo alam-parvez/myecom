@@ -17,6 +17,28 @@
                         <a href="{{route('admin-create-maincategory')}}" class="float-end text-light"><i class="fa fa-plus text-light"></i></a>
                     </h5>
                     <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Pic</th>
+                                <th>Active</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        @foreach ($data as $item)
+                        <tbody>
+                            <tr>
+                                <td>{{$item->id}}</td>
+                                <td>Name</td>
+                                <td>Pic</td>
+                                <td>Active</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                        @endforeach
                         
                     </table>
                 </div>
