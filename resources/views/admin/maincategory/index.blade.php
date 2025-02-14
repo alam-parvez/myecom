@@ -16,7 +16,7 @@
                     <h5 class="bg-secondary text-center p-2 text-light">{{ $title }}
                         <a href="{{route('admin-create-maincategory')}}" class="float-end text-light"><i class="fa fa-plus text-light"></i></a>
                     </h5>
-                    <table>
+                    <table class="table table-bordered" id="dataTable">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -25,7 +25,7 @@
                                 <th>Active</th>
                                 <th></th>
                                 <th></th>
-                            </tr>
+                            </tr>   
                         </thead>
                         @foreach ($data as $item)
                         <tbody>
@@ -36,7 +36,7 @@
                                     <a href="{{$item->pic()}}">
                                     <img src="{{$item->pic()}}" height="50px" width="80px" alt=""></a>
                                 </td>
-                                <td>{{$item->active}}</td>
+                                <td class="{{$item->active??"text-success":"text-danger"}}">{{$item->active ??"Yes":"No" }}</td>
                                 <td></td>
                                 <td></td>
                             </tr>

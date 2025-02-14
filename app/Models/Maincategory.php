@@ -14,6 +14,6 @@ class Maincategory extends Model
     ];
 
     function pic(){
-    return    Storage::url("pic");
+    return Storage::url($this->pic);
     }
 }

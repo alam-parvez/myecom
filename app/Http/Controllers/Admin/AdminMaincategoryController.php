@@ -46,8 +46,6 @@ class AdminMaincategoryController extends Controller
             "pic" => "required"
 
         ]);   
-
-    
         $pic = Storage::disk("public")->put("maincategories", $request->pic);
 
         $this->maincategory->create([
