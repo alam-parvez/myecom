@@ -27,8 +27,8 @@
                                 <th></th>
                             </tr>   
                         </thead>
-                        @foreach ($data as $item)
                         <tbody>
+                        @foreach ($data as $item)
                             <tr>
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name}}</td>
@@ -36,12 +36,12 @@
                                     <a href="{{$item->pic()}}">
                                     <img src="{{$item->pic()}}" height="50px" width="80px" alt=""></a>
                                 </td>
-                                <td class="{{$item->active??"text-success":"text-danger"}}">{{$item->active ??"Yes":"No" }}</td>
+                                <td class="{{$item->active?"text-success":"text-danger"}}">{{$item->active ? "Yes":"No" }}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
+                            @endforeach
                         </tbody>
-                        @endforeach
                     </table>
                 </div>
         </div>
