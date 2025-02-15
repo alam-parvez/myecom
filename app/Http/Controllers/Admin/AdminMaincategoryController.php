@@ -86,6 +86,8 @@ class AdminMaincategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = $this->maincategory->find($id);
+        Storage::disk("public")->unlink($this->pic);
+        return redirect()->name('admin-maincategory');
     }
 }
