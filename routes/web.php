@@ -44,6 +44,7 @@ Route::group(["prefix" => "maincategory"], function () {
     Route::post("/store", [AdminMaincategoryController::class, "store"])->name("admin-store-maincategory");
     Route::get("/destroy{id}", [AdminMaincategoryController::class, "destroy"])->name("admin-destroy-maincategory");
     Route::get("/edit/{id}", [AdminMaincategoryController::class, "edit"])->name("admin-edit-maincategory");
+    Route::post("/update/{id}", [AdminMaincategoryController::class, "update"])->name("admin-update-maincategory");
 });
 });
 

@@ -27,14 +27,14 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label>Pic*</label>
+                                <label>Pic</label>
                                 <input type="file" name="pic" value="{{old('name')}}" class="form-control border-3 border-secondary">
                                 @error('pic')
                                     <p class="text-danger">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label>Active*</label>
+                                <label>Active</label>
                                <select name="active" class="form-select border-3 border-secondary"> 
                                     <option value="1" {{$data->active=="1"?'selected':''}}>Yes</option>
                                     <option value="0" {{$data->active=="0"?'selected':''}}>No</option>

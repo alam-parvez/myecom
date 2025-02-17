@@ -78,17 +78,20 @@ class AdminMaincategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-
-            "name" => "required|min:3|max:30|unique:maincategories"
-
-        ]);
         $data = $this->maincategory->find($id);
-        if ($request->pic)
+        if($data->name===$request->name)
+        
+            $request->validate([
+                "name" => "required|min:3|max:30"
+            ]);
+        else
+        $request->validate([
+            "name" => "required|min:3|max:30|maincategories"
+        ]);
+        
+         if($request->pic)
         {
-            
             Storage::disk("public")->delete("maincateogories", $data->pic); 
-
             $pic = Storage::disk("public")->put("maincategories", $request->pic);
         }
 
@@ -110,7 +113,7 @@ class AdminMaincategoryController extends Controller
     public function destroy(string $id)
     {
         $data = $this->maincategory->find($id);
-        Storage::disk("public")->delete("maincateogories", $item->pic);
+        Storage::disk("public")->delete("maincateogories", $data->pic);
         $data->delete();
         return redirect()->route('admin-maincategory');
     }
