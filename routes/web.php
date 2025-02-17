@@ -42,8 +42,9 @@ Route::group(["prefix" => "maincategory"], function () {
     Route::get("/", [AdminMaincategoryController::class, "index"])->name("admin-maincategory");
     Route::get("/create", [AdminMaincategoryController::class, "create"])->name("admin-create-maincategory");
     Route::post("/store", [AdminMaincategoryController::class, "store"])->name("admin-store-maincategory");
-    Route::post("/destroy{id}", [AdminMaincategoryController::class, "destroy"])->name("admin-destroy-maincategory");
-    });
+    Route::get("/destroy{id}", [AdminMaincategoryController::class, "destroy"])->name("admin-destroy-maincategory");
+    Route::get("/edit/{id}", [AdminMaincategoryController::class, "edit"])->name("admin-edit-maincategory");
+});
 });
 
 

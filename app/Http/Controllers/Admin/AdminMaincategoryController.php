@@ -12,8 +12,6 @@ class AdminMaincategoryController extends Controller
 {
     public function __construct(private Maincategory $maincategory) {}
 
-
-
     /* *
      * Display a listing of the resource.
      */
@@ -23,7 +21,7 @@ class AdminMaincategoryController extends Controller
         $data = $this->maincategory->latest()->get();   //new record first
         //  $data = $this->maincategory->all();   //oldest record first
         // return $data;
-        return view("admin.maincategory.index", compact("title","data"));
+        return view("admin.maincategory.index", compact("title", "data"));
     }
 
     /**
@@ -45,7 +43,7 @@ class AdminMaincategoryController extends Controller
             "name" => "required|min:3|max:30|unique:maincategories",
             "pic" => "required"
 
-        ]);   
+        ]);
         $pic = Storage::disk("public")->put("maincategories", $request->pic);
 
         $this->maincategory->create([
@@ -70,7 +68,9 @@ class AdminMaincategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = $this->maincategory->find($id);
+        $title = "Update Maincategory";
+        return view("admin.maincategory.update", compact("title", 'data'));
     }
 
     /**
@@ -78,7 +78,30 @@ class AdminMaincategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+
+            "name" => "required|min:3|max:30|unique:maincategories"
+
+        ]);
+        $data = $this->maincategory->find($id);
+        if ($request->pic)
+        {
+            
+            Storage::disk("public")->delete("maincateogories", $data->pic); 
+
+            $pic = Storage::disk("public")->put("maincategories", $request->pic);
+        }
+
+        else
+            $pic = $data->pic;
+
+        $data->update([
+            "name" => $request->name,
+            "pic" => $pic,
+            "active" => $request->active
+
+        ]);
+        return redirect()->route('admin-maincategory');
     }
 
     /**
@@ -86,8 +109,9 @@ class AdminMaincategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $item = $this->maincategory->find($id);
-        Storage::disk("public")->unlink($this->pic);
-        return redirect()->name('admin-maincategory');
+        $data = $this->maincategory->find($id);
+        Storage::disk("public")->delete("maincateogories", $item->pic);
+        $data->delete();
+        return redirect()->route('admin-maincategory');
     }
 }
