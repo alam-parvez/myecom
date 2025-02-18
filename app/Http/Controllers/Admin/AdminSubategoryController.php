@@ -5,23 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Maincategory;
+use App\Models\Subcategory;
 use Illuminate\Support\Facades\Storage;
 
-class AdminMaincategoryController extends Controller
+class AdminSubcategoryController extends Controller
 {
-    public function __construct(private Maincategory $maincategory) {}
+    public function __construct(private Subcategory $subcategory) {}
 
     /* *
      * Display a listing of the resource.
      */
     public function index()
     {
-        $title = "Maincategory";
-        $data = $this->maincategory->latest()->get();   //new record first
-        //  $data = $this->maincategory->all();   //oldest record first
+        $title = "Subcategory";
+        $data = $this->subcategory->latest()->get();   //new record first
+        //  $data = $this->subcategory->all();   //oldest record first
         // return $data;
-        return view("admin.maincategory.index", compact("title", "data"));
+        return view("admin.subcategory.index", compact("title", "data"));
     }
 
     /**
@@ -29,8 +29,8 @@ class AdminMaincategoryController extends Controller
      */
     public function create()
     {
-        $title = "Create Maincategory";
-        return view("admin.maincategory.create", compact("title"));
+        $title = "Create Subcategory";
+        return view("admin.subcategory.create", compact("title"));
     }
 
     /**
@@ -46,13 +46,13 @@ class AdminMaincategoryController extends Controller
         ]);
         $pic = Storage::disk("public")->put("maincategories", $request->pic);
 
-        $this->maincategory->create([
+        $this->subcategory->create([
             "name" => $request->name,
             "pic" => $pic,
             "active" => $request->active
 
         ]);
-        return redirect()->route('admin-maincategory');
+        return redirect()->route('admin-subcategory');
     }
 
     /**
@@ -68,9 +68,9 @@ class AdminMaincategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $data = $this->maincategory->find($id);
-        $title = "Update Maincategory";
-        return view("admin.maincategory.update", compact("title", 'data'));
+        $data = $this->subcategory->find($id);
+        $title = "Update Subcategory";
+        return view("admin.subcategory.update", compact("title", 'data'));
     }
 
     /**
@@ -78,23 +78,20 @@ class AdminMaincategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $this->maincategory->find($id);
-        if($data->name===$request->name)
+        $data = $this->subcategory->find($id);
+        if ($data->name === $request->name)
             $request->validate([
                 "name" => "required|min:3|max:30"
             ]);
         else
-        $request->validate([
-            "name" => "required|min:3|max:30|unique:maincategories"
-        ]);
-        
-         if($request->pic)
-        {
-            Storage::disk("public")->delete("maincateogories", $data->pic); 
-            $pic = Storage::disk("public")->put("maincategories", $request->pic);
-        }
+            $request->validate([
+                "name" => "required|min:3|max:30|unique:maincategories"
+            ]);
 
-        else
+        if ($request->pic) {
+            Storage::disk("public")->delete("maincateogories", $data->pic);
+            $pic = Storage::disk("public")->put("maincategories", $request->pic);
+        } else
             $pic = $data->pic;
 
         $data->update([
@@ -103,7 +100,7 @@ class AdminMaincategoryController extends Controller
             "active" => $request->active
 
         ]);
-        return redirect()->route('admin-maincategory');
+        return redirect()->route('admin-subcategory');
     }
 
     /**
@@ -111,9 +108,9 @@ class AdminMaincategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = $this->maincategory->find($id);
+        $data = $this->subcategory->find($id);
         Storage::disk("public")->delete("maincateogories", $data->pic);
         $data->delete();
-        return redirect()->route('admin-maincategory');
+        return redirect()->route('admin-subcategory');
     }
 }
