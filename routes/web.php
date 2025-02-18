@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminMaincategoryController;
+use App\Http\Controllers\Admin\AdminSubcategoryController;
 
 
 Route::get('/', [FrontController::class, "homePage"])->name("home");
@@ -45,6 +46,17 @@ Route::group(["prefix" => "maincategory"], function () {
     Route::get("/destroy{id}", [AdminMaincategoryController::class, "destroy"])->name("admin-destroy-maincategory");
     Route::get("/edit/{id}", [AdminMaincategoryController::class, "edit"])->name("admin-edit-maincategory");
     Route::post("/update/{id}", [AdminMaincategoryController::class, "update"])->name("admin-update-maincategory");
+});
+
+
+
+Route::group(["prefix" => "subcategory"], function () {
+    Route::get("/", [AdminSubcategoryController::class, "index"])->name("admin-subcategory");
+    Route::get("/create", [AdminSubcategoryController::class, "create"])->name("admin-create-subcategory");
+    Route::post("/store", [AdminSubcategoryController::class, "store"])->name("admin-store-subcategory");
+    Route::get("/destroy{id}", [AdminSubcategoryController::class, "destroy"])->name("admin-destroy-subcategory");
+    Route::get("/edit/{id}", [AdminSubcategoryController::class, "edit"])->name("admin-edit-subcategory");
+    Route::post("/update/{id}", [AdminSubcategoryController::class, "update"])->name("admin-update-subcategory");
 });
 });
 

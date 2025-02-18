@@ -40,11 +40,11 @@ class AdminSubcategoryController extends Controller
     {
         $request->validate([
 
-            "name" => "required|min:3|max:30|unique:maincategories",
+            "name" => "required|min:3|max:30|unique:subcategories",
             "pic" => "required"
 
         ]);
-        $pic = Storage::disk("public")->put("maincategories", $request->pic);
+        $pic = Storage::disk("public")->put("subcategories", $request->pic);
 
         $this->subcategory->create([
             "name" => $request->name,
@@ -85,12 +85,12 @@ class AdminSubcategoryController extends Controller
             ]);
         else
             $request->validate([
-                "name" => "required|min:3|max:30|unique:maincategories"
+                "name" => "required|min:3|max:30|unique:subcategories"
             ]);
 
         if ($request->pic) {
-            Storage::disk("public")->delete("maincateogories", $data->pic);
-            $pic = Storage::disk("public")->put("maincategories", $request->pic);
+            Storage::disk("public")->delete("subcateogories", $data->pic);
+            $pic = Storage::disk("public")->put("subcategories", $request->pic);
         } else
             $pic = $data->pic;
 
@@ -109,8 +109,8 @@ class AdminSubcategoryController extends Controller
     public function destroy(string $id)
     {
         $data = $this->subcategory->find($id);
-        Storage::disk("public")->delete("maincateogories", $data->pic);
+        Storage::disk("public")->delete("subcateogories", $data->pic);
         $data->delete();
         return redirect()->route('admin-subcategory');
     }
-}
+} 

@@ -1,7 +1,7 @@
 <div class="list-group">
   <a href="{{route('admin-home')}}" class="list-group-item list-group-item-action bg-secondary text-light" aria-current="true"><i class="fa fa-home fs-4"></i><span class="float-end">Home</span></a>
   <a href="{{route('admin-maincategory')}}" class="list-group-item list-group-item-action bg-secondary text-light" aria-current="true"><i class="fa fa-list fs-4"></i><span class="float-end">MainCategory</span></a>
-  <a href="#" class="list-group-item list-group-item-action bg-secondary text-light" aria-current="true"><i class="fa fa-list fs-4"></i><span class="float-end">SubCategory</span></a>
+  <a href="{{route('admin-subcategory')}}" class="list-group-item list-group-item-action bg-secondary text-light" aria-current="true"><i class="fa fa-list fs-4"></i><span class="float-end">SubCategory</span></a>
   <a href="#" class="list-group-item list-group-item-action bg-secondary text-light" aria-current="true"><i class="fa fa-list fs-4"></i><span class="float-end">Brands</span></a>
   <a href="#" class="list-group-item list-group-item-action bg-secondary text-light" aria-current="true"><i class="fa fa-star fs-4"></i><span class="float-end">Testimonials</span></a>
   <a href="#" class="list-group-item list-group-item-action bg-secondary text-light" aria-current="true"><i class="fa fa-list fs-4"></i><span class="float-end">Product</span></a>
