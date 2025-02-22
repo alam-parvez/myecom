@@ -5,6 +5,7 @@
 @endsection
 
 @section('main')
+
 @include('partials.hero')
         <div class="container-fluid my-3">
             <div class="row">
@@ -45,7 +46,6 @@
                             </div>
                         </div>
                     </form>
-                    
                 </div>
         </div>
     </div>
