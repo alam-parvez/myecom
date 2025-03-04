@@ -28,22 +28,22 @@
                             </tr>   
                         </thead>
                         <tbody>
-                        @foreach ($data as $item)
-                            <tr>
-                                <td>{{$item->id}}</td>
-                                <td>{{$item->name}}</td>
-                                <td>
-                                    <a href="{{$item->pic()}}">
-                                    <img src="{{$item->pic()}}" height="50px" width="80px" alt=""></a>
-                                </td>
-                                <td class="{{$item->active?"text-success":"text-danger"}}">{{$item->active ? "Yes":"No" }}</td>
-                                <td><a href="{{route('admin-edit-subcategory',$item->id)}}" class="btn btn-secondary"><i class="fa fa-edit"></i></a></td>
-                                <td><a href="{{route('admin-destroy-subcategory',$item->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
-                            </tr>
+                            @foreach ($data as $item)
+                                <tr>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>
+                                        <a href="{{$item->pic()}}">
+                                        <img src="{{$item->pic()}}" height="50px" width="80px" alt=""></a>
+                                    </td>
+                                    <td class="{{$item->active?"text-success":"text-danger"}}">{{$item->active ? "Yes":"No" }}</td>
+                                    <td><a href="{{route('admin-edit-subcategory',$item->id)}}" class="btn btn-secondary"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="{{route('admin-destroy-subcategory',$item->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
-                </div>
+                </div> 
         </div>
     </div>
 @endsection
