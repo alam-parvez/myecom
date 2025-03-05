@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminMaincategoryController;
 use App\Http\Controllers\Admin\AdminSubcategoryController;
 use App\Http\Controllers\Admin\AdminBrandController;
+use App\Http\Controllers\Admin\AdminTestimonialsController;
 
 
 Route::get('/', [FrontController::class, "homePage"])->name("home");
@@ -67,7 +68,17 @@ Route::group(["prefix" => "maincategory"], function () {
         Route::post("/store", [AdminBrandController::class, "store"])->name("admin-store-brand");
         Route::get("/destroy{id}", [AdminBrandController::class, "destroy"])->name("admin-destroy-brand");
         Route::get("/edit/{id}", [AdminBrandController::class, "edit"])->name("admin-edit-brand");
-        Route::post("/update/{id}", [AdminBrandController::class, "update"])->name("admin-updatebrand");
+        Route::post("/update/{id}", [AdminBrandController::class, "update"])->name("admin-update-brand");
+    });
+
+    
+    Route::group(["prefix" => "testimonials"], function () {
+        Route::get("/", [AdminTestimonialsController::class, "index"])->name("admin-testimonials");
+        Route::get("/create", [AdminTestimonialsController::class, "create"])->name("admin-create-testimonials");
+        Route::post("/store", [AdminTestimonialsController::class, "store"])->name("admin-store-testimonials");
+        Route::get("/destroy{id}", [AdminTestimonialsController::class, "destroy"])->name("admin-destroy-testimonials");
+        Route::get("/edit/{id}", [AdminTestimonialsController::class, "edit"])->name("admin-edit-testimonials");
+        Route::post("/update/{id}", [AdminTestimonialsController::class, "update"])->name("admin-update-testimonials");
     });
 
 
