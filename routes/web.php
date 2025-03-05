@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminMaincategoryController;
 use App\Http\Controllers\Admin\AdminSubcategoryController;
+use App\Http\Controllers\Admin\AdminBrandController;
 
 
 Route::get('/', [FrontController::class, "homePage"])->name("home");
@@ -50,14 +51,27 @@ Route::group(["prefix" => "maincategory"], function () {
 
 
 
-Route::group(["prefix" => "subcategory"], function () {
-    Route::get("/", [AdminSubcategoryController::class, "index"])->name("admin-subcategory");
-    Route::get("/create", [AdminSubcategoryController::class, "create"])->name("admin-create-subcategory");
-    Route::post("/store", [AdminSubcategoryController::class, "store"])->name("admin-store-subcategory");
-    Route::get("/destroy{id}", [AdminSubcategoryController::class, "destroy"])->name("admin-destroy-subcategory");
-    Route::get("/edit/{id}", [AdminSubcategoryController::class, "edit"])->name("admin-edit-subcategory");
-    Route::post("/update/{id}", [AdminSubcategoryController::class, "update"])->name("admin-update-subcategory");
-});
+    Route::group(["prefix" => "subcategory"], function () {
+        Route::get("/", [AdminSubcategoryController::class, "index"])->name("admin-subcategory");
+        Route::get("/create", [AdminSubcategoryController::class, "create"])->name("admin-create-subcategory");
+        Route::post("/store", [AdminSubcategoryController::class, "store"])->name("admin-store-subcategory");
+        Route::get("/destroy{id}", [AdminSubcategoryController::class, "destroy"])->name("admin-destroy-subcategory");
+        Route::get("/edit/{id}", [AdminSubcategoryController::class, "edit"])->name("admin-edit-subcategory");
+        Route::post("/update/{id}", [AdminSubcategoryController::class, "update"])->name("admin-update-subcategory");
+    });
+
+
+    Route::group(["prefix" => "brand"], function () {
+        Route::get("/", [AdminBrandController::class, "index"])->name("admin-brand");
+        Route::get("/create", [AdminBrandController::class, "create"])->name("admin-create-brand");
+        Route::post("/store", [AdminBrandController::class, "store"])->name("admin-store-brand");
+        Route::get("/destroy{id}", [AdminBrandController::class, "destroy"])->name("admin-destroy-brand");
+        Route::get("/edit/{id}", [AdminBrandController::class, "edit"])->name("admin-edit-brand");
+        Route::post("/update/{id}", [AdminBrandController::class, "update"])->name("admin-updatebrand");
+    });
+
+
+
 });
 
 
