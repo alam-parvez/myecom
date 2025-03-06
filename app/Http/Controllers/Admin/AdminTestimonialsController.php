@@ -22,7 +22,7 @@ class AdmintestimonialsController extends Controller
         $title = "testimonials";
         $data = $this->testimonials->latest()->get();   //new record first
         
-        return view("admin.testimonials.index", compact("title", "data"));
+        return view("admin.testimonial.index", compact("title", "data"));
     }
 
     /**
@@ -31,7 +31,7 @@ class AdmintestimonialsController extends Controller
     public function create()
     {
         $title = "Create testimonials";
-        return view("admin.testimonials.create", compact("title"));
+        return view("admin.testimonial.create", compact("title"));
     }
 
     /**
@@ -73,7 +73,7 @@ class AdmintestimonialsController extends Controller
     {
         $data = $this->testimonials->find($id);
         $title = "Update testimonials";
-        return view("admin.testimonials.update", compact("title", 'data'));
+        return view("admin.testimonial.update", compact("title", 'data'));
     }
 
     /**
@@ -84,7 +84,7 @@ class AdmintestimonialsController extends Controller
         $data = $this->testimonials->find($id);
         if ($data->name === $request->name)
             $request->validate([
-                "name" => "required|min:3|max:30|unique:testimonialss",
+                "name" => "required|min:3|max:30|unique:testimonials",
                 "message" => "required|min:50",
             ]);
 
@@ -100,7 +100,7 @@ class AdmintestimonialsController extends Controller
             "active" => $request->active
 
         ]);
-        return redirect()->route('admin-brand');
+        return redirect()->route('admin-testimonials');
     }
 
     /**

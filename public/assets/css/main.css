@@ -56,6 +56,18 @@ body {
     font-family: var(--default-font);
 }
 
+.testimonials-message
+{
+    height: 200px;
+    min-width: 300px;
+    overflow: auto;
+    text-align: justify;
+}
+.testimonials-message::-webkit-scrollbar
+{
+    display: none;
+}
+
 .hero-section {
     position: relative;
     width: 100vw;
