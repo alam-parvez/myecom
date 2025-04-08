@@ -38,7 +38,7 @@
                                     <img src="{{$item->pic()}}" height="50px" width="80px" alt=""></a>
                                 </td>
                                 <td>
-                                    <div class="testimonials-message">
+                                    <div class="testimonial-message">
                                         {{ $item->message }}
                                     </div>
                                 </td>

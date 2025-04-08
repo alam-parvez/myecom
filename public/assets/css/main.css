@@ -56,14 +56,14 @@ body {
     font-family: var(--default-font);
 }
 
-.testimonials-message
+.testimonial-message
 {
     height: 200px;
     min-width: 300px;
     overflow: auto;
     text-align: justify;
 }
-.testimonials-message::-webkit-scrollbar
+.testimonial-message::-webkit-scrollbar
 {
     display: none;
 }
@@ -79,7 +79,6 @@ body {
 .hero-section h1 {
     position: absolute;
     top: 30px;
-    /* left: 40%; */
     width: 100%;
     text-align: center;
     color: white;
