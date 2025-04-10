@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminMaincategoryController;
 use App\Http\Controllers\Admin\AdminSubcategoryController;
 use App\Http\Controllers\Admin\AdminBrandController;
+use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminTestimonialsController;
 
 
@@ -41,14 +42,14 @@ Route::group(["prefix" => "admin"], function () {
 
 
 
-Route::group(["prefix" => "maincategory"], function () {
-    Route::get("/", [AdminMaincategoryController::class, "index"])->name("admin-maincategory");
-    Route::get("/create", [AdminMaincategoryController::class, "create"])->name("admin-create-maincategory");
-    Route::post("/store", [AdminMaincategoryController::class, "store"])->name("admin-store-maincategory");
-    Route::get("/destroy{id}", [AdminMaincategoryController::class, "destroy"])->name("admin-destroy-maincategory");
-    Route::get("/edit/{id}", [AdminMaincategoryController::class, "edit"])->name("admin-edit-maincategory");
-    Route::post("/update/{id}", [AdminMaincategoryController::class, "update"])->name("admin-update-maincategory");
-});
+    Route::group(["prefix" => "maincategory"], function () {
+        Route::get("/", [AdminMaincategoryController::class, "index"])->name("admin-maincategory");
+        Route::get("/create", [AdminMaincategoryController::class, "create"])->name("admin-create-maincategory");
+        Route::post("/store", [AdminMaincategoryController::class, "store"])->name("admin-store-maincategory");
+        Route::get("/destroy{id}", [AdminMaincategoryController::class, "destroy"])->name("admin-destroy-maincategory");
+        Route::get("/edit/{id}", [AdminMaincategoryController::class, "edit"])->name("admin-edit-maincategory");
+        Route::post("/update/{id}", [AdminMaincategoryController::class, "update"])->name("admin-update-maincategory");
+    });
 
 
 
@@ -71,7 +72,7 @@ Route::group(["prefix" => "maincategory"], function () {
         Route::post("/update/{id}", [AdminBrandController::class, "update"])->name("admin-update-brand");
     });
 
-    
+
     Route::group(["prefix" => "testimonials"], function () {
         Route::get("/", [AdminTestimonialsController::class, "index"])->name("admin-testimonials");
         Route::get("/create", [AdminTestimonialsController::class, "create"])->name("admin-create-testimonials");
@@ -82,7 +83,14 @@ Route::group(["prefix" => "maincategory"], function () {
     });
 
 
-
+    Route::group(["prefix" => "product"], function () {
+        Route::get("/", [AdminProductController::class, "index"])->name("admin-product");
+        Route::get("/create", [AdminProductController::class, "create"])->name("admin-create-product");
+        Route::post("/store", [AdminProductController::class, "store"])->name("admin-store-product");
+        Route::get("/destroy{id}", [AdminProductController::class, "destroy"])->name("admin-destroy-product");
+        Route::get("/edit/{id}", [AdminProductController::class, "edit"])->name("admin-edit-product");
+        Route::post("/update/{id}", [AdminProductController::class, "update"])->name("admin-update-product");
+    });
 });
 
 

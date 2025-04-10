@@ -5,12 +5,22 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+
+
+use App\Models\Product;
+use App\Models\Maincategory;
+use App\Models\Subcategory;
+use App\Models\Brand;
+
+
+
 
 class AdminProductController extends Controller
 {
-    public function __construct(private Product $product) {}
+    public function __construct(private Product $product, private Maincategory $maincategory, private Subcategory $subcategory, private Brand $brand) {
+
+    }
 
     /* *
      * Display a listing of the resource.
