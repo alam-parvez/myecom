@@ -41,10 +41,10 @@ class AdminProductController extends Controller
     public function create()
     {
         $title = "Create product";
-        $maincategories = $this->maincategory->latest()->get();
-        $subcategories = $this->subcategory->latest()->get();
-        $brands = $this->brand->latest()->get();
-        return view("admin.product.create", compact("title"));
+        $maincategories = $this->maincategory->where("active", true)->latest()->get();
+        $subcategories = $this->subcategory->where("active", true)->latest()->get();
+        $brands = $this->brand->where("active", true)->latest()->get();
+        return view("admin.product.create", compact("title","maincategories","subcategories","brands"));
     }
 
     /**
