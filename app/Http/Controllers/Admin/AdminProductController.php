@@ -20,6 +20,7 @@ class AdminProductController extends Controller
 {
     public function __construct(private Product $product, private Maincategory $maincategory, private Subcategory $subcategory, private Brand $brand) {
 
+
     }
 
     /* *
@@ -40,6 +41,9 @@ class AdminProductController extends Controller
     public function create()
     {
         $title = "Create product";
+        $maincategories = $this->maincategory->latest()->get();
+        $subcategories = $this->subcategory->latest()->get();
+        $brands = $this->brand->latest()->get();
         return view("admin.product.create", compact("title"));
     }
 
