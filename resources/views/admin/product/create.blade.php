@@ -31,7 +31,8 @@
                                 <label>MainCategory*</label>
                                 <select name="maincategory_id" class="form-select border-3 border-secondary">
                                 @foreach ($maincategories as $item)
-                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                <option value="{{$item->id}}"  
+                                    {{old('maincategory_id') == $item->id ?'selected':''}}>{{$item->name}}</option>
                             
                                 @endforeach
                             </select>
@@ -49,8 +50,8 @@
                             <div class="col-md-6 mb-3">
                                 <label>Active*</label>
                                <select name="active" class="form-select border-3 border-secondary"> 
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
+                                    <option value="1" {{old('active')=="1"?'selected':''}}>Yes</option>
+                                    <option value="0" {{old('active')=="0"?'selected':''}}>No</option>
                                </select>
                             </div>
                             <div class="mb-3">
