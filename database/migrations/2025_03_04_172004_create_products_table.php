@@ -32,11 +32,6 @@ return new class extends Migration
             
             $table->bigInteger("brand_id")->unsigned()->index();
             $table->foreign("brand_id")->references("id")->on("brands")->onDelete("cascade");
-             
-
-
-
-
             $table->timestamps();
         });
     }

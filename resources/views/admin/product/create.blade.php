@@ -26,17 +26,17 @@
                             @enderror
                         </div>
 
-                            <div class="row">
-                                <div class="col-md-3 col-sm-4">
-                                    <label>MainCategory*</label>
-                                    <select name="maincategory_id" class="form-select border-3 border-secondary">
-                                    @foreach ($maincategories as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                
-                                    @endforeach
-                                </select>
-                               </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-4">
+                                <label>MainCategory*</label>
+                                <select name="maincategory_id" class="form-select border-3 border-secondary">
+                                @foreach ($maincategories as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            
+                                @endforeach
+                            </select>
                             </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">

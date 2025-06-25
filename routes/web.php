@@ -10,8 +10,8 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminMaincategoryController;
 use App\Http\Controllers\Admin\AdminSubcategoryController;
 use App\Http\Controllers\Admin\AdminBrandController;
-use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminTestimonialsController;
+use App\Http\Controllers\Admin\AdminProductController;
 
 
 Route::get('/', [FrontController::class, "homePage"])->name("home");

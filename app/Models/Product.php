@@ -14,7 +14,7 @@ class Product extends Model
         'brand_id ',
         'color',
         'size',
-        'basePrice',
+        'basePrice', 
         'discount',
         'finalPrice',
         'stock',

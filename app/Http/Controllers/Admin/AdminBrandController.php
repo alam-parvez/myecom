@@ -77,7 +77,7 @@ class AdminbrandController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+     {
         $data = $this->brand->find($id);
         if ($data->name === $request->name)
             $request->validate([
@@ -85,12 +85,12 @@ class AdminbrandController extends Controller
             ]);
         else
             $request->validate([
-                "name" => "required|min:3|max:30|unique:maincategories"
+                "name" => "required|min:3|max:30|unique:brands"
             ]);
-
+ 
         if ($request->pic) {
-            Storage::disk("public")->delete("maincateogories", $data->pic);
-            $pic = Storage::disk("public")->put("maincategories", $request->pic);
+            Storage::disk("public")->delete("brands", $data->pic);
+            $pic = Storage::disk("public")->put("brands", $request->pic);
         } else
             $pic = $data->pic;
 
