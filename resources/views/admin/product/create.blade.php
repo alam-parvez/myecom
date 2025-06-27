@@ -118,6 +118,14 @@
                                 </div>
                             </div>
 
+                            <div class="mb-3">
+                                    <label>Description</label>
+                                    <textarea name="description" id="richTextEditor" rows="5" style="border:3px solid gray">
+                                    </textarea>
+                            </div>
+
+                            
+
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label>Pic*</label>
