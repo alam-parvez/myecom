@@ -5,6 +5,7 @@
 @endsection
 
 @section('main')
+
 @include('partials.hero')
         <div class="container-fluid my-3">
             <div class="row">
@@ -27,6 +28,8 @@
                         </div>
 
                         <div class="row">
+
+
                             <div class="col-md-3 col-sm-4">
                                 <label>MainCategory*</label>
                                 <select name="maincategory_id" class="form-select border-3 border-secondary">
@@ -37,7 +40,83 @@
                                 @endforeach
                             </select>
                             </div>
-                        </div>
+
+
+
+                             <div class="col-md-3 col-sm-4">
+                                <label>SubCategory*</label>
+                                <select name="subcategory_id" class="form-select border-3 border-secondary">
+                                @foreach ($subcategories as $item)
+                                <option value="{{$item->id}}"  
+                                    {{old('subcategory_id') == $item->id ?'selected':''}}>{{$item->name}}</option>
+                            
+                                @endforeach
+                            </select>
+                            </div>
+
+
+
+                             <div class="col-md-3 col-sm-4">
+                                <label>Brand*</label>
+                                <select name="brand_id" class="form-select border-3 border-secondary">
+                                @foreach ($brands as $item)
+                                <option value="{{$item->id}}"  
+                                    {{old('brand_id') == $item->id ?'selected':''}}>{{$item->name}}
+                                </option>
+                            
+                                @endforeach
+                            </select>
+                            </div>
+
+                            
+                             <div class="col-md-3 col-sm-4">
+                                <label>Stock*</label>
+                                <select name="stock" class="form-select border-3 border-secondary">
+                                   
+                                    <option value="1" {{old('stock')=="1"?'selected':''}}>Yes</option>
+                                    <option value="0" {{old('stock')=="0"?'selected':''}}>No</option>
+                                     
+                                 </select>
+                         
+                                </div>
+                        
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label>Color:</label>
+                                    <input type="text" name="color" class="form-control border-3 border-secondary" placeholder="Product Color">
+                                    @error('color')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Size:</label>
+                                    <input type="text" name="size" class="form-control border-3 border-secondary" placeholder="Product Size">
+                                    @error('color')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label>Base Price:</label>
+                                    <input type="number" name="basePrice" class="form-control border-3 border-secondary" placeholder="Product Base Price">
+                                    @error('basePrice')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Discount:</label>
+                                    <input type="text" name="discount" class="form-control border-3 border-secondary" placeholder="Discount on Product in %">
+                                    @error('discount')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -54,8 +133,10 @@
                                     <option value="0" {{old('active')=="0"?'selected':''}}>No</option>
                                </select>
                             </div>
+                        </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-secondary w-100">Submit</button>
+                            </div>
                             </div>
                         </div>
                     </form>

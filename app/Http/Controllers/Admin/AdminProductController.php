@@ -55,14 +55,11 @@ class AdminProductController extends Controller
         $request->validate([
 
             "name" => "required|min:3|max:30|unique:maincategories",
-            "maincategory_id" => "required",
-            "subcategory_id" => "required",
-            "brand_id" => "required",
+            "color" => "required",
             "size" => "required",
             "basePrice" => "required",
             "discount" => "required",
             "finalPrice" => "required",
-            "stock" => "required",
             "stockQuantity" => "required",
             "pic" => "required"
 
