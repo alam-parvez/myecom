@@ -85,7 +85,8 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label>Color:</label>
-                                    <input type="text" name="color" class="form-control border-3 border-secondary" placeholder="Product Color">
+                                    <input type="text" name="color" class="form-control border-3 border-secondary"
+                                     placeholder="Product Color" value="{{old('color')}}">
                                     @error('color')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -93,7 +94,8 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label>Size:</label>
-                                    <input type="text" name="size" class="form-control border-3 border-secondary" placeholder="Product Size">
+                                    <input type="text" name="size" class="form-control border-3 border-secondary" 
+                                    placeholder="Product Size" value="{{old('size')}}">
                                     @error('color')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -103,7 +105,8 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label>Base Price:</label>
-                                    <input type="number" name="basePrice" class="form-control border-3 border-secondary" placeholder="Product Base Price">
+                                    <input type="number" name="basePrice" class="form-control border-3 border-secondary"
+                                     placeholder="Product Base Price" value="{{old('basePrice')}}">
                                     @error('basePrice')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -111,7 +114,8 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label>Discount:</label>
-                                    <input type="text" name="discount" class="form-control border-3 border-secondary" placeholder="Discount on Product in %">
+                                    <input type="text" name="discount" class="form-control border-3 border-secondary"
+                                     placeholder="Discount on Product in %" value="{{old('discount')}}"> 
                                     @error('discount')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -121,16 +125,26 @@
                             <div class="mb-3">
                                     <label>Description</label>
                                     <textarea name="description" id="richTextEditor" rows="5" style="border:3px solid gray">
-                                    </textarea>
+                                    {{old('description')}}</textarea>
                             </div>
 
                             
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
+                                <label>Stock Quantity*</label>
+                                <input type="number" name="stockquantity" placeholder="Stock Quantity" value="{{old('stockQuantity')}}" class="form-control border-3 border-secondary">
+                                @error('stockquantity')
+                                    <p class="text-danger">{{$message}}</p>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <label>Pic*</label>
-                                <input type="file" name="pic" value="{{old('name')}}" class="form-control border-3 border-secondary">
+                                <input type="file" name="pic[]" multiple value="{{old('name')}}" class="form-control border-3 border-secondary">
                                 @error('pic')
+                                    <p class="text-danger">{{$message}}</p>
+                                @enderror
+                                 @error('pic.*')
                                     <p class="text-danger">{{$message}}</p>
                                 @enderror
                             </div>

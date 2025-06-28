@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\Maincategory;
 use App\Models\Subcategory;
 use App\Models\Brand;
@@ -18,8 +19,8 @@ use App\Models\Brand;
 
 class AdminProductController extends Controller
 {
-    public function __construct(private Product $product, private Maincategory $maincategory, private Subcategory $subcategory, private Brand $brand) {
-
+    public function __construct(private Product $product, private Maincategory $maincategory,
+     private Subcategory $subcategory, private Brand $brand, private ProductImage $productImage) {
 
     }
 
@@ -57,22 +58,47 @@ class AdminProductController extends Controller
             "name" => "required|min:3|max:30|unique:maincategories",
             "color" => "required",
             "size" => "required",
-            "basePrice" => "required",
-            "discount" => "required",
+            "basePrice" => "required|numeric|min:1",
+            "discount" => "required|numeric|min:0|max:100",
             "finalPrice" => "required",
-            "stockQuantity" => "required",
-            "pic" => "required"
+            "stockQuantity" => "required|numeric|min:0",
+            "pic" => "required",
+            "pic.*" => "required|image|mimes:jpeg,jpg,png|max:1024"
 
         ]);
-        $pic = Storage::disk("public")->put("maincategories", $request->pic);
 
-        $this->product->create([
+        $picName = [];
+        foreach($request->file("pic") as  $img){
+
+            // $pic = Storage::disk("public")->put("products", $img);
+            array_push($picName,Storage::disk("public")->put("products", $img));
+        }
+
+
+        $product = $this->product->create([
             "name" => $request->name,
-            "pic" => $pic,
+            "maincategory_id" =>$request->maincategory_id,
+            "subcategory_id" => $request->subcategory_id,
+            "brand_id" => $request->brand_id,
+            "color" => $request->color,
+            "basePrice" => $request->basePrice,
+            "discount" => $request->discount,
+            "finalPrice" => intval($request->basePrice-$request->basePrice*$request->discount/100),
+            "description" => $request->description,
+            "stock" => $request->stock,
+            "stockQuantity" => $request->stockQuantity,
             "active" => $request->active
 
         ]);
-        return redirect()->route('admin-brand');
+
+        forEach($picName as $img){
+            $this->productImage->create([
+                "name" =>$img,
+                "product_id" =>$product->id,
+            ]);
+        }
+
+        return redirect()->route('admin-product');
     }
 
     /**
